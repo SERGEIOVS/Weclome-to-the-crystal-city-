@@ -1,4 +1,10 @@
-craft1 
-craft2 
-craft3
-craft4
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2
+craft1,element-1,element-2

@@ -106,7 +106,7 @@ def start():
         screen.blit( bg_images[bg_num] , ( 0 , 0 ) )
 
         for i in range(len(crafts_file1)):
-                pg.draw.rect(screen , (45 , 45 , 45) , ( int(screen_width) /  2 - 100 , int(screen_height) / 10 + i * 40 , 90  , bigfont ))
+                pg.draw.rect(screen , (45 , 45 , 45) , ( int(screen_width) /  2 - 100 , int(screen_height) / 10 + i * 40 , 300  , bigfont))
                 screen.blit(crafts_list[i] , ( int(screen_width) /  2 - 70 , int(screen_height) / 10 + i * 40 , 100 , bigfont ) )
 
     if game_state == 'main_menu' and nickname_entered == 1 :
