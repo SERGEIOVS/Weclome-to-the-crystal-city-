@@ -1,0 +1,449 @@
+
+captions and subtitles
+титры и субтитры
+
+
+"""
+for i in range( len ( Vihicles_file1 ) ) :
+    
+    i = Vihicles(Vihicles_file1[i].split(',')[0] , Vihicles_file1[i].split(',')[1] , Vihicles_images_list[ i ] )
+    Vihicles_list.append( i )
+
+"""
+
+
+"""
+
+            state = 'go'
+            turn = 'left'
+            hero_speed = 4
+            vector[ 0 ] -= hero_speed
+            if animation <= len(hero_animations_dir) -1:
+                clock.tick(FPS/fps_1)
+                animation += 1
+                hero ='Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png'
+                hero_image = pg.image.load( 'Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png')
+                heroimage = Image.open('Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png')
+                hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
+                screen.blit( hero_image , ( hero_x , hero_y ) )
+
+            if animation >= len(hero_animations_dir) -1 :
+                animation = 0
+                state = 'go'
+                turn = 'left'
+                hero_speed = 4
+                clock.tick(FPS/fps_1)
+                animation += 1
+                hero ='Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png'
+                hero_image = pg.image.load( 'Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png')
+                heroimage = Image.open('Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png')
+                hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
+                screen.blit( hero_image , ( hero_x , hero_y ) )
+
+"""
+
+
+
+"""
+cells_num = 10
+radiation_level = 0
+max_radiation_level = 100
+
+class interface :
+    def __init__( self, x , y , image ) :
+        self.x = x
+        self.y = y
+        self.image = image
+
+beltinventorycell = interface( int(screen_width  )/ 2 - cells_num * 50 / 2, int(screen_height  )- 50 , pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ) )
+backpackinventorycell = interface( 710 , 300 , pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ) )
+currentinventorycell = interface( int(screen_width) / 2 -cells_num * 25 , beltinventorycell.y , pg.image.load( 'Img\Interface\иконки/current_inventory_cell.png' ) )
+cursor_icon = interface( 0 , 0  , pg.image.load( 'Img\Interface\иконки/crosshair.png' ) )
+clock_icon = interface( 0 , 1200  , pg.image.load( 'Img\Interface\иконки/clock_icon.png' ) )
+achievements_icon = interface( 0 , 325 , pg.image.load( 'Img\Interface\иконки/achievements_icon.png' ) )
+health_icon = interface(0 , int(screen_height) - 50 , pg.image.load( 'Img\Interface\иконки/health_icon.png' ) )
+armor_icon = interface( 0 , int(screen_height) - 25  , pg.image.load( 'Img\Interface\иконки/armor_icon.png' ) )
+current_ammo_icon = interface(0 , int(screen_height) - 75  , pg.image.load( 'Img\Interface\иконки/pistol_ammo_icon.png' ) )
+button = interface(2100 , 210 , pg.image.load( 'Img\Interface\иконки/button.png' ) )
+MusicIcon = interface(0 , 100  , pg.image.load( 'Img\Interface\иконки/MusicIcon.png' ) )
+craft_icon = interface( 0 , 450 , pg.image.load( 'Img\Interface\иконки/craft_icon.png' ) )
+energy_icon = interface( 0 , 400 , pg.image.load( 'Img\Interface\иконки/energy_icon.png' ) )
+cancel_icon = interface(0 , 25 , pg.image.load( 'Img\Interface\иконки/cancel_icon.png' ) )
+minimap_icon = interface( int(screen_width) - 710 , 1030 , pg.image.load( 'Img\Interface\иконки/minimap_icon.png' ) )
+radiation_icon = interface(0 , 500 , pg.image.load( 'Img\Interface\иконки/bio_danger_icon_green.png' ) )
+
+Icons_list = [
+
+achievements_icon , achievements_icon , health_icon , armor_icon , current_ammo_icon , craft_icon ,
+energy_icon , minimap_icon , radiation_icon
+
+]
+
+craftinging_recipes_list = [
+
+achievements_icon , achievements_icon , health_icon , armor_icon , current_ammo_icon , craft_icon ,
+
+]
+        #screen.blit( hero_image , ( hero_x , hero_y ) )
+
+
+            #for i in range( len ( islands_file1 ) ) :
+            #    pg.draw.rect(mini_map_surf , (100 , 50 , 0) , (minimap_border_offset + int(islands_file1[ i ].split(',')[0]) / (100 * map_scale) ,  minimap_border_offset + int(islands_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale ,   10 / map_scale ))
+
+
+    """        if  animation <= 5 : 
+            anim_wait += 1
+            print('animation : ' , animation)
+        
+            if  animation >= 5 : 
+                anim_wait -= 1
+                print('animation : ' , animation)
+
+            if anim_wait >= 11 and anim_wait <= 12 and animation >= 0:
+                anim_wait = 0
+                print('change!')
+                animation += 1 
+                anim_wait += 1
+                #print('wait :      ' , anim_wait)"""
+            
+
+pg.display.set_icon(pg.image.load('Img\Interface\иконки/Game_icon.png') )
+"""
+
+        #for i in range(len(items_file1 ) ) :
+        #    screen.blit(items_images_list[ i ] , ( -camera.rect[ 0 ] + int(items_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(items_file1[i].split(',')[1]) ) ) 
+
+        #for i in range( len ( traps_file1 ) ) :
+        #    screen.blit( traps_images_list[i] , ( -camera.rect[ 0 ] + int(traps_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(traps_file1[i].split(',')[0])  ) )
+        
+
+            #for i in range( len ( islands_file1 ) ) :
+            #    pg.draw.rect(mini_map_surf , (100 , 50 , 0) , (minimap_border_offset + int(islands_file1[ i ].split(',')[0]) / (100 * map_scale) ,  minimap_border_offset + int(islands_file1[ i ].split(',')[1]) / (100 * map_scale) ,  80 / map_scale ,  80 / map_scale ))
+            
+"""
+pistolmagazine_capacity = 30
+pistolmax_magazine_capacity = 300
+
+hero_belt_inventory_cells = []
+
+hero_belt_inventory_cells_x_list = [
+
+int(screen_width) / 2 -cells_num * 50 / 2 + 10  , int(screen_width) / 2 -cells_num * 50 / 2 + 60  , int(screen_width) / 2 -cells_num * 50 / 2 + 110 ,
+int(screen_width)/ 2 -cells_num * 50 / 2 + 160 , int(screen_width) / 2 -cells_num * 50 / 2 + 210 , int(screen_width) / 2 -cells_num * 50 / 2 + 260 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 310 , int(screen_width) / 2 -cells_num * 50 / 2 + 360 , int(screen_width) / 2 -cells_num * 50 / 2 + 410 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 460]
+
+hero_belt_inventory_cells_y_list = []
+hero_belt_inventory_cells_images = []
+
+for i in range( len ( hero_belt_inventory_cells_x_list ) ) :
+    hero_belt_inventory_cells_y_list.append(int(screen_height) - 50)
+    hero_belt_inventory_cells_images.append(pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ))
+    i = interface( hero_belt_inventory_cells_x_list[ i ] , hero_belt_inventory_cells_y_list[ i ] ,hero_belt_inventory_cells_images[ i ] )
+    hero_belt_inventory_cells.append( i )
+
+hero_belt_inventory = []
+
+hero_belt_inventory_items_x_list = [
+
+int(screen_width) / 2 -cells_num * 50 / 2 + 20,
+int(screen_width) / 2 -cells_num * 50 / 2 + 60,
+int(screen_width) / 2 -cells_num * 50 / 2 + 110]
+
+hero_belt_inventory_items_y_list = []
+
+hero_belt_inventory_images = [
+    
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' ),
+pg.image.load( 'Objects\Items\weapons\pistols/pistol_turned_right.png' )
+]
+
+for i in range( len ( hero_belt_inventory_items_x_list ) ) :
+    hero_belt_inventory_items_y_list.append( int(screen_height) - 40 )
+    i = interface( hero_belt_inventory_items_x_list[ i ] , hero_belt_inventory_items_y_list[ i ] , hero_belt_inventory_images[ i ] )
+    hero_belt_inventory.append( i )
+
+hero_backpack_inventory_cells = []
+hero_backpack_inventory_cells_x_list = [
+
+int(screen_width) / 2 -cells_num * 50 / 2 + 10  , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 110 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 210 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 310 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 410
+
+]
+
+hero_backpack_inventory_cells_y_list = []
+
+hero_backpack_inventory_cells_images = []
+
+for i in range( len ( hero_backpack_inventory_cells_x_list ) ) :
+    hero_backpack_inventory_cells_y_list.append( int(screen_height) / 2 +100 )
+    hero_backpack_inventory_cells_images.append( pg.image.load( 'Img\Interface\иконки/big_inventory_cell.png' ) )
+    i = interface( hero_backpack_inventory_cells_x_list[ i ] , hero_backpack_inventory_cells_y_list[ i ] , hero_backpack_inventory_cells_images[ i ] )
+    hero_backpack_inventory_cells.append( i )
+
+hero_backpack_inventory = []
+
+hero_backpack_inventory_items_x_list = [
+
+hero_backpack_inventory_cells_x_list[ 0 ] + 20 ,
+hero_backpack_inventory_cells_x_list[ 0 ] + 120,
+hero_backpack_inventory_cells_x_list[ 0 ] + 220 ,
+hero_backpack_inventory_cells_x_list[ 0 ] + 320 ,
+hero_backpack_inventory_cells_x_list[ 0 ] + 420
+
+]
+
+hero_backpack_inventory_items_y_list = []
+
+hero_backpack_inventory_images = [
+
+pg.image.load('Img\Interface\иконки/cancel_icon.png') ,
+pg.image.load( 'Objects\Items\weapons\machete/machete_turned_right.png' ) ,
+pg.image.load( 'Objects\Items/tools/axes/axe_turned_right.png' ) ,
+pg.image.load( 'Objects\Items\lighters/gas_lighter.png' ) , 
+pg.image.load( 'Objects\Items/flashlights\white/flashlight_turned_right.png' )
+
+]
+
+for i in range( len ( hero_backpack_inventory_items_x_list ) ) :
+    hero_backpack_inventory_items_y_list.append(hero_backpack_inventory_cells_y_list[ 1 ] + 20)
+    hero_backpack_inventory.append(hero_backpack_inventory_cells_y_list[ 1 ] + 20)
+    
+    i = interface( hero_backpack_inventory_items_x_list[ i ] , hero_backpack_inventory_items_y_list[ i ] , hero_backpack_inventory_images[ i ] )
+    hero_backpack_inventory.append( i )
+
+hero_belt_inventory_cells = []
+
+hero_belt_inventory_cells_x_list = [
+
+int(screen_width) / 2 -cells_num * 50 / 2 + 10  , int(screen_width) / 2 -cells_num * 50 / 2 + 60  , int(screen_width) / 2 -cells_num * 50 / 2 + 110 ,
+int(screen_width) / 2 -cells_num * 50 / 2 + 160 , int(screen_width) / 2 -cells_num * 50 / 2 + 210 ,int(screen_width) / 2 -cells_num * 50 / 2 + 260 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 310 , int(screen_width) / 2 -cells_num * 50 / 2 + 360 , int(screen_width) / 2 -cells_num * 50 / 2 + 410 , 
+int(screen_width) / 2 -cells_num * 50 / 2 + 460
+
+]
+
+hero_belt_inventory_cells_y_list = []
+hero_belt_inventory_cells_images = []
+
+for i in range( len ( hero_belt_inventory_cells_x_list ) ) :
+    hero_belt_inventory_cells_y_list.append(int(screen_height) - 50)
+    hero_belt_inventory_cells_images.append(pg.image.load( 'Img\Interface\иконки/inventory_cell.png' ))
+    i = interface( hero_belt_inventory_cells_x_list[ i ] , hero_belt_inventory_cells_y_list[ i ] ,hero_belt_inventory_cells_images[ i ] )
+    hero_belt_inventory_cells.append( i )
+
+hero_belt_inventory = []
+hero_belt_inventory_items_x_list = [
+int(screen_width) / 2 -cells_num * 50 / 2 + 20]
+hero_belt_inventory_items_y_list = []
+hero_belt_inventory_images = [ pg.image.load( 'Objects\Items\weapons/pistols/pistol_turned_right.png' ) ]
+
+for i in range( len ( hero_belt_inventory_items_x_list ) ) :
+    hero_belt_inventory_items_y_list.append( int(screen_height) - 40 )
+    i = interface( hero_belt_inventory_items_x_list[ i ] , hero_belt_inventory_items_y_list[ i ] , hero_belt_inventory_images[ i ] )
+    hero_belt_inventory.append( i )"""
+
+
+#pg.image.load( 'Objects/Buildings/парковки/парковка.png' ) ,
+#pg.image.load( 'декорации/фонарные столбы/фонарный столб.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/cave.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/lake.png' ) ,
+#pg.image.load( 'Objects/Buildings/палатка/открытая_палатка.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/rails.png' ) ,
+#pg.image.load( 'декорации/Могилы/могила.png' ) , 
+#pg.image.load( 'декорации/деревья/tree.png' ) ,
+#pg.image.load( 'декорации/capsules/Test_unit-Dogman.png' ) ,
+#pg.image.load( 'декорации/capsules/Test_unit-mutant1.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/vertical_cave_hole.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/vertical_cave_stairs.png' ) ,
+#pg.image.load( 'Objects/Buildings/bridges/vertical_cave_stairs+big_stone.png' ),
+#pg.image.load( 'Objects/Buildings/bridges/длинные острые камни.png' ) ,
+#pg.image.load( 'мебель/диван.png' ) ,
+#pg.image.load( 'мебель/шкаф.png' ) , 
+#pg.image.load( 'мебель/холодильник.png' ) , 
+#pg.image.load( 'мебель/электроплита.png' ) , 
+#pg.image.load( 'мебель/лампа.png' ) ,
+#pg.image.load( 'мебель/стол и шкафчики.png' ) , 
+#pg.image.load( 'мебель/стол.png ' ) , 
+#pg.image.load( 'мебель/шкаф с полкой.png' ) , 
+#pg.image.load( 'декорации/помойки/помойка.png' ) , 
+#pg.image.load( 'декорации/помойки/горящая_помойка.png' ) ,
+#pg.image.load( 'мебель/стиральная машина.png' ) 
+"""class Furniture :
+    def __init__( self , x , y , image , width , height ) :
+        self.x = x
+        self.y = y
+        self.image = image
+        self.width = width
+        self.height = height
+
+furniture= []"""
+
+
+    """
+    pygame.draw.rect(sc, (255, 255, 255),(20, 20, 100, 75))
+
+pygame.draw.rect(sc, (64, 128, 255), (150, 20, 100, 75), 8)
+
+pygame.draw.line(sc,WHITE,[10,30],[290,15],3)
+
+pygame.draw.line(sc,WHITE, [10,50],[290,35])
+
+pygame.draw.aaline(sc,WHITE,[10,70],[290,55])
+
+pygame.draw.lines(sc, WHITE, True,[[10, 10], [140, 70],[280, 20]], 2)
+
+pygame.draw.aalines(sc, WHITE, False,[[10, 100], [140, 170],[280, 110]])
+
+pygame.draw.polygon(sc, WHITE, [[150, 10], [180, 50], [90, 90], [30, 30]])
+
+pygame.draw.polygon(sc, WHITE, [[250, 110], [280, 150], [190, 190], [130, 130]])
+
+pygame.draw.aalines(sc, WHITE, True, [[250, 110], [280, 150], [190, 190], [130, 130]])
+
+pygame.draw.circle(sc,YELLOW,(100,100),50)
+
+pygame.draw.circle(sc,PINK,(200,100),50,10)
+
+pygame.draw.ellipse(sc, GREEN, (10, 50, 280, 100))
+
+pygame.draw.arc(sc, WHITE,(10, 50, 280, 100),0, pi)
+
+pygame.draw.arc(sc, PINK,(50, 30, 200, 150),pi, 2*pi, 3)
+    """
+        #game_status = 'main_menu'
+        #for i in range( len ( f_creatures_x_file1 ) ) :
+        # screen.blit( friendly_creatures_images_list[i] , ( -camera.rect[ 0 ] + int(f_creatures_x_file1[ i ] ) , -camera.rect[ 1 ] + int(f_creatures_y_file1[ i ] ) ) )   
+
+        #for i in range( len ( enemies_x_file1 ) ) :
+                #if int(enemies_x_file1[ i ])  >= camera.rect[0]  and int(enemies_x_file1[ i ]) <= camera.rect[0] + int(screen_width)  and \
+                #int(enemies_y_file1[ i ])  >= camera.rect[1]  and int(enemies_y_file1[ i ]) <= camera.rect[1] + int(screen_height) :
+                    #screen.blit( enemies_images_list[ i ] , ( -camera.rect[ 0 ] + int(enemies_x_file1[ i ]) , -camera.rect[ 1 ] + int(enemies_y_file1[ i ] ) ) )
+        
+        #for i in range( len ( furniture ) ) :
+            #screen.blit( furniture_images_list[ i ] , ( -camera.rect[ 0 ] + furniture_x_list  [ i ]  , -camera.rect[ 1 ] + furniture_y_list[ i ] ) )
+
+#pg.draw.rect(mini_map_surf , ( 255 , 0 , 0 ) , (0 , 0 , int(screen_width) / 3 , int(screen_height) / 3  ) , 1)
+#mini_map_surf.blit(cancel_icon.image , ( int(screen_width) / 3 - 25 , 0 ) )
+#heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_' + str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+#hero_status = 'attack' ; hero_turn = 'left'
+                #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+                #hero_image =  pg.image.load('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
+                #heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+#current_ammo-=1 ; gun_shot = pg.mixer.Sound( 'Audio/sounds/firegun/auto_firing(3 times)_1.mp3' ) ; gun_shot.play()
+#hero_image =  pg.image.load( 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png' )
+                #heroimage = Image.open('персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + str(hero_head)  +'_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png')
+#hero_status = 'attack' ; hero_turn = 'right'
+                #hero = 'персонажи/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' + '_0_0_0_0_' + str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+
+ #current_ammo-=1 ; gun_shot = pg.mixer.Sound( 'Audio/sounds/firegun/auto_firing(3 times)_1.mp3' ) ; gun_shot.play()
+#heroimage = Image.open(hero)
+#cursor_icon.image = pg.image.load( 'Interface/icons/crosshair.png' ) 
+                #screen.blit( cursor_icon.image , ( pos[ 0 ] , pos[ 1 ] ) )
+
+
+        #if event.type == pg.FINGERDOWN:
+            #print('test')
+
+
+            """
+            pg.draw.line(quests_surf,(255,0,0),[150,0],[150,500],3)
+
+            for i in range( len(ColorsCoords_x_1)) :
+
+                i = pg.draw.circle( quests_surf , (255 , 0 , 0 ) , (350 + i * 20 , 50 ) , 5 )
+            
+            for i in range( 5) :
+                i = pg.draw.rect(quests_surf , (45 , 45 , 45) , (20  , 50 + i * 40 , 100, 20) , 2 , 10)
+                #i = pg.draw.circle( quests_surf , (255 , 0 , 0 ) , (20  , 50 + i * 20 ) , 5 )
+            
+            for i in range( len(ColorsCoords_x_2)) :
+
+                i = pg.draw.circle( quests_surf , (255 , 0 , 0 ) , (350 + i * 20 , 100 ) , 5 )
+
+            screen.blit(quests_surf , ( 100 , 50 ) )
+            
+            """
+
+            #mini_map_surf.blit(cancel_icon.image , ( int(screen_width) / 3 - 25 , 0 ) )
+            #for i in range( len ( units_file1 ) ) :
+                #if show_units == 1:
+                    #pg.draw.rect(mini_map_surf , (255,0,0) , (int(units_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 , 10  ))
+             #screen.blit( Island_images[ 0 ] , ( -camera.rect[ 0 ] + int(islands_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(islands_file1[i].split(',')[1] ) ) )
+
+
+        """
+        if open_backpack == 1:
+            for i in range( len ( hero_belt_inventory_cells_x_list ) ) : 
+                screen.blit ( hero_belt_inventory_cells_images[ i ] , ( hero_belt_inventory_cells_x_list[ i ] ,  hero_belt_inventory_cells_y_list[ i ] ) )
+
+            for i in range( len ( hero_belt_inventory_items_x_list ) ) :
+                screen.blit ( hero_belt_inventory_images[ i ] , ( hero_belt_inventory_items_x_list[ i ] ,  hero_belt_inventory_items_y_list[ i ] ) )
+
+            for i in range( len ( hero_backpack_inventory_cells_x_list ) ) :
+                screen.blit ( hero_backpack_inventory_cells_images[ i ] , ( hero_backpack_inventory_cells_x_list[ i ] ,  hero_backpack_inventory_cells_y_list[ i ] ) )
+
+            for i in range( len( hero_backpack_inventory_items_x_list ) ) :
+                screen.blit ( hero_backpack_inventory_images[ i ] , ( hero_backpack_inventory_items_x_list[ i ] ,  hero_backpack_inventory_items_y_list[ i ] ) )
+
+        if show_interface == 1:
+                for i in Icons_list:
+                    if show_hero_stats == 1:
+                        screen.blit( i.image , ( i.x , i.y ) )
+                    """
+
+
+        #for i in unitslist:
+        #    screen.blit( i.image, ( -camera.rect[ 0 ] + int(units_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(units_file1[i].split(',')[1])  ) )  
+    
+        #delete_color = (255, 255, 255)
+        #img.set_colorkey(delete_color)
+
+
+        """
+        Colors = [
+
+            RED , ORANGE , YELLOW , GREEN , LIGHT_BLUE , BLUE , PURPLE 
+
+            ]
+
+        delete_color = (255, 255, 255)
+        img.set_colorkey(delete_color)
+        
+        screen.blit( button.image , ( int(screen_width) / 2  , 50 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 100 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 150 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 200 ) )
+        screen.blit( button.image , ( int(screen_width) / 2  , 250 ) )
+        
+        
+        """
+
+
+#self.loot = loot
+#self.health = health
+#self.speed = speed
+#self.turn = turn
+
+
+#self.loot = loot
+#self.health = health
+#self.speed = speed
+#self.turn = turn
+#hero = 'Objects/Characters/герой/'+ str(gender) + '/' + 'hero_' + 'no' + '_'  + '_' + str(body) + '_' + str(legs) + '_' + str(boots) +'_' /
+#+  str(lefthand) + '_' + str(righthand) + '_' + str(state) + '_' + str(turn) + '_' + str(animation) + '.png'
+# '_0_0_0_0_'
+
+
+
+#+  str(lefthand) + '_' + str(righthand) + '_' + str(state) + '_' + str(turn) + '_' + str(animation) + '.png'
+
+
+#hero = 'Objects/Characters/герой/'+ str(hero_gender) + '/' + 'hero_' + 'no' +'_'+ str(hero_head)  + '_' + str(hero_body) + '_' + str(hero_legs) + '_' + str(hero_boots) +'_' +  str(herolefthand) + '_' + str(herorighthand) + '_' + str(hero_status) + '_' + str(hero_turn) + '_' + str(hero_animation) + '.png'
+# '_0_0_0_0_'
