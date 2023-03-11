@@ -61,9 +61,13 @@ crafts_filemode = 'r'
 crafts_file = open (crafts_filename , crafts_filemode)
 crafts_file1 = crafts_file.readlines()
 
-bg_images = [
-pg.image.load( 'wallpapers/0/0.png' ) , pg.image.load( 'wallpapers/0/1.png' ) ,
-pg.image.load( 'wallpapers/0/2.png' ) , pg.image.load( 'wallpapers/0/3.png' )]
+location = 0
+
+bg_images = os.listdir('wallpapers/' + str(location) + '/')
+
+#[
+#pg.image.load( 'wallpapers/0/0.png' ) , pg.image.load( 'wallpapers/0/1.png' ) ,
+#pg.image.load( 'wallpapers/0/2.png' ) , pg.image.load( 'wallpapers/0/3.png' )]
 
 
 bg_num = 1
@@ -91,9 +95,11 @@ mini_map_surf = pg.Surface(( int(screen_width) / map_size , int(screen_height) /
 
 checkpoint_size = 50
 
-Island_images = [ 
-pg.image.load( 'Objects/islands/0/0.png' ) ,
-pg.image.load( 'Objects/islands/0/0.png')]
+Island_images = os.listdir('Objects/islands/0/')
+
+#[ 
+#pg.image.load( 'Objects/islands/0/0.png' ) ,
+#pg.image.load( 'Objects/islands/0/0.png')]
 
 class Background :
     def __init__(self , x , y , image) :

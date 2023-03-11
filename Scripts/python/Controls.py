@@ -25,7 +25,11 @@ death_sound = pg.mixer.Sound('Audio/sounds/death/bell.mp3')
 dx , dy = 1 , -1
 
 #music
-music = 'dead.mp3'
+soundtracks = os.listdir('Audio/enviroment/')
+#music = 'dead.mp3'
+switch_music = 1
+music = soundtracks[switch_music]
+
 pg.mixer.music.load('Audio/enviroment/' + str(music))
 
 minimap_border_offset = 10
@@ -51,8 +55,8 @@ open_backpack = 1
 map_scale1 = 1
 
 bg_num = 1
-wallpapers_dir = os.listdir('wallpapers/')
-wallpaper = wallpapers_dir[bg_num]
+wallpapers = os.listdir('wallpapers/')
+wallpaper = wallpapers[bg_num]
 
 dark_level = 0
 show_hero_stats = 1
@@ -64,8 +68,8 @@ inteface_surf = pg.Surface(( 200 , 150 ))
 
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 angle = 2
-volume_levels= 10
-screen_resolutions = 5
+volume_levels = 10
+
 
 ColorsCoords_x_1 = []
 ColorsCoords_y_1 = []
@@ -78,7 +82,7 @@ for i in range(volume_levels) :
     i = ColorsCoords_x_1.append( i * 100) 
     i = ColorsCoords_y_1.append(400)
 
-for i in range(screen_resolutions) :
+for i in range(5) :
     i += 1 
     i = ColorsCoords_x_2.append( i * 100) 
     i = ColorsCoords_y_2.append(500)
@@ -123,13 +127,9 @@ def start():
     if game_state == 'play':        
         mouse_visible = False
         mouse_set_visible = pg.mouse.set_visible( mouse_visible )
-    
-
-        for i in range(int( int(screen_width) / meter)) :
-            pg.draw.line(screen , ( 0 , 0 , 0 ) , [i * meter , 0  ] , [i * meter , int(screen_width)     ] , 1 )
         
-        for i in range(int( int(screen_height) / meter)) :
-            pg.draw.line(screen , ( 0 , 0 , 0 ) , [0 , i * meter  ] , [int(screen_width), i * meter     ] , 1 )
+        
+        
 
         if ground == 1:
             for i in range( len ( islands_file1 ) ) :
@@ -139,15 +139,17 @@ def start():
                 screen.blit( Vihicles_images_list[0] , ( -camera.rect[ 0 ] + int(Vihicles_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(Vihicles_file1[i].split(',')[1]) ) ) 
         
             for i in range( len(buildings_file1 )) :
-                screen.blit(  i , ( -camera.rect[ 0 ] + int(buildings_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(buildings_file1[ i ].split(',')[1] ) ))
+                screen.blit( buildings_list[i], ( -camera.rect[ 0 ] + int(buildings_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(buildings_file1[ i ].split(',')[1] ) ))
 
         for i in range( len ( roads_file1 ) ) :
-                screen.blit( roads_images[ 0 ] , ( -camera.rect[ 0 ] + int(roads_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(roads_file1[i].split(',')[1] ) ) )
+            screen.blit( roads_images[ 0 ] , ( -camera.rect[ 0 ] + int(roads_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(roads_file1[i].split(',')[1] ) ) )
 
-        #for i in range(len(unitslist)):
-        #    screen.blit( unitslist[i], ( -camera.rect[ 0 ] + int(units_coords_x[i]) , -camera.rect[ 1 ] + int(units_coords_y[i])  ) )
+        for i in range(len(units_file1)):
+            screen.blit( units_images_list[i], ( -camera.rect[ 0 ] + int(units_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(units_file1[i].split(',')[1])  ) )
         
-
+        #for i in range(len(unitslist)):
+        #   #screen.blit( units_images_list[i] , ( -camera.rect[ 0 ] + int(units_file1[i].split(',')[0]) , -camera.rect[ 1 ] + int(units_file1[i].split(',')[1])  ) )
+        #    pg.image.load('Objects/Characters/' + str(unit_types[i]) + '/0/left/0.png'),
 
 
         inteface_surf.set_alpha(100)
@@ -156,7 +158,7 @@ def start():
         dark_surf.set_alpha(dark_level)
         
         screen.blit(dark_surf , ( 0 , 0 ) ) 
-        screen.blit(inteface_surf , ( 0 , 200 ) )
+        #screen.blit(inteface_surf , ( 0 , 200 ) )
 
         if show_map == 1:
             mini_map_surf.fill((minimapBGcolor))
@@ -170,15 +172,15 @@ def start():
             for i in range( len ( Vihicles_file1 ) ) :
                 pg.draw.rect(mini_map_surf , (0 , 0 , 0) , (int(Vihicles_file1[i].split(',')[0]) / (100 * map_scale) , int(Vihicles_file1[i].split(',')[1]) / (100 * map_scale) , 5 / map_scale , 3 / map_scale ))
 
-            #for i in range( len ( buildings_file1 ) ) :
-            #    if show_buildings == 1:
-            #        pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
+            for i in range( len ( buildings_file1 ) ) :
+                if show_buildings == 1:
+                    pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
 
             for i in range( len ( roads_file1 ) ) :
                     pg.draw.rect(mini_map_surf , (45,45,45) , (int(roads_file1[ i ].split(',')[0]) / (100 * map_scale) , int(roads_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
 
-            #for i in range( len ( units_file1 ) ) :
-            #    pg.draw.rect(mini_map_surf , (255,0,0) , ( int(units_coords_x[i]) / (100 * map_scale) , int(units_coords_y[i]) / (100 * map_scale) , 1 / map_scale , 1 / map_scale))
+            for i in range( len ( units_file1 ) ) :
+                pg.draw.rect(mini_map_surf , (255,0,0) , ( int(units_file1[i].split(',')[0]) / (100 * map_scale) , int(units_file1[i].split(',')[1]) / (100 * map_scale) , 1 / map_scale , 1 / map_scale))
                 
             hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , ( minimap_border_offset   + camera.rect[0] / (100 * map_scale) , minimap_border_offset + camera.rect[1] / (100 * map_scale)) ,1 / map_scale )
             screen.blit(mini_map_surf , ( minimap_x , minimap_y ) )
@@ -212,9 +214,8 @@ while run :
     for event in pg.event.get() :
         if event.type == pg.MOUSEMOTION :
             pos = pg.mouse.get_pos()
-            
 
-            
+
             if game_state == 'main_menu':
                 cursor = pg.image.load( 'Interface/icons/cursor/select.png' ) 
                 mouse_visible = True
@@ -236,6 +237,7 @@ while run :
 
             pg.display.update()
 
+
             pressed = pg.mouse.get_pressed()
             pos = pg.mouse.get_pos()
             
@@ -249,8 +251,6 @@ while run :
                 hero ='Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png'
                 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
-                
-
             if event.button == 1 and int(ammo) <= 1 and game_state == 'play':
                 ammo = 0 ; current_ammo_counter = big_font.render( str( ammo ) + '/' + str( ammo_full * mags ) , False , colors[2] ) 
                 no_ammo = pg.mixer.Sound( 'Audio/sounds/firegun/no_ammo.wav' )
@@ -258,6 +258,9 @@ while run :
     
         if event.type == pg.QUIT:
             run = False
+
+
+
     keys = pg.key.get_pressed()
 
     if keys[pg.K_a] and game_state == 'play' and camera.rect[0] >= 0:
@@ -510,6 +513,11 @@ while run :
 
     if keys [pg.K_UP] :
         show_map = 1
+        for i in range(int( int(screen_width) / (meter/10))) :
+            pg.draw.line(mini_map_surf , ( 0 , 0 , 0 ) , [i * meter/ 10 , 0  ] , [i * meter /10, int(screen_width)     ] , 1 )
+        
+        for i in range(int( int(screen_height) / (meter/10))) :
+            pg.draw.line(mini_map_surf , ( 0 , 0 , 0 ) , [0 , i * meter /10  ] , [int(screen_width), i * meter  /10   ] , 1 )
         
     
     if keys [pg.K_DOWN] :
@@ -582,9 +590,9 @@ while run :
             for i in range( len ( Vihicles_file1 ) ) :
                 pg.draw.rect(mini_map_surf , (0 , 0 , 0) , (int(Vihicles_file1[i].split(',')[0]) / (100 * map_scale) , int(Vihicles_file1[i].split(',')[1]) / (100 * map_scale) , 5 / map_scale , 3 / map_scale ))
 
-            #for i in range( len ( buildings_file1 ) ) :
-            #    if show_buildings == 1:
-            #        pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
+            for i in range( len ( buildings_file1 ) ) :
+                if show_buildings == 1:
+                    pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
 
             hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , ( minimap_border_offset   + camera.rect[0] / (100 * map_scale) , minimap_border_offset + camera.rect[1] / (100 * map_scale)) ,1 / map_scale )
             
@@ -610,9 +618,9 @@ while run :
             for i in range( len ( Vihicles_file1 ) ) :
                 pg.draw.rect(mini_map_surf , (0 , 0 , 0) , (int(Vihicles_file1[i].split(',')[0]) / (100 * map_scale) , int(Vihicles_file1[i].split(',')[1]) / (100 * map_scale) , 5 / map_scale , 3 / map_scale ))
 
-            #for i in range( len ( buildings_file1 ) ) :
-            #    if show_buildings == 1:
-            #        pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
+            for i in range( len ( buildings_file1 ) ) :
+                if show_buildings == 1:
+                    pg.draw.rect(mini_map_surf , colors[4] , (int(buildings_file1[ i ].split(',')[0]) / (100 * map_scale) , int(buildings_file1[ i ].split(',')[1]) / (100 * map_scale) ,  10 / map_scale, 10 / map_scale  ))
 
             hero_marker = pg.draw.circle(mini_map_surf , ( 255 , 100 , 0 ) , ( minimap_border_offset   + camera.rect[0] / (100 * map_scale) , minimap_border_offset + camera.rect[1] / (100 * map_scale)) ,1 / map_scale )
             screen.blit(mini_map_surf , ( minimap_x , minimap_y ) )
@@ -621,18 +629,22 @@ while run :
     if keys [pg.K_ESCAPE]  and open_backpack == 1:
         open_backpack  = 0
     
-    if keys [pg.K_0] :
+    if keys [pg.K_1] :
+        switch_music = 0
+        music = soundtracks[switch_music]
+        pg.mixer.music.load('Audio/enviroment/' + str(music))
         pg.mixer.music.play()
-    
+
+    if keys [pg.K_2] :
+        switch_music = 1
+        music = soundtracks[switch_music]
+        pg.mixer.music.load('Audio/enviroment/' + str(music))
+        pg.mixer.music.play()
     
 
     screen.fill( (BGcolor) )
     start()
 
-
-
-    #pg.draw.line(screen, (0,255,0), (300 * math.cos(angle) ), (100 * math.sin(angle)), 1)
-    # 
     if game_state == 'play' and game_state == 'saving':
                 
                 mouse_visible = False

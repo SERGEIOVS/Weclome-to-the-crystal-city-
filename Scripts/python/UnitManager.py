@@ -56,11 +56,10 @@ hero_image = pg.image.load( 'Objects/Characters/Hero/' + str(name) + '/' + str(s
 heroimage = Image.open('Objects/Characters/Hero/' + str(name) + '/' + str(state) + '/' + str(turn) + '/' + str(animation) + '.png')
 hero_x , hero_y = int(screen_width) / 2  - heroimage.width / 2 , int(screen_height)  / 2 - heroimage.height / 2
 
-
-
 big_font = pg.font.Font( None , 30)
 small_font = pg.font.Font( None , 15 )
-unit_types = os.listdir('Objects/characters/')
+
+unit_types = os.listdir('Objects/Characters/Units/')
 unit_type_num = 0
 
 show_hero_armor = big_font.render( str( armor ) + "/" +  str( max_armor ) , False , ( 250 , 0, 0 ) )
@@ -73,14 +72,33 @@ units_file = open (units_filename , unitsfilemode)
 units_file1 = units_file.readlines()
 
 unitslist = []
+units_images_list = []
 
-units_categories = []
+class Units:
+    def __init__( self , x , y , image ) :
+        self.x = x
+        self.y = y    
+        self.image = image
 
-units_coords_x = []
+for i in range( len ( units_file1 ) ) :
+    units_images_list.append(pg.image.load('Objects/Characters/Units/' + str(unit_types[i]) + '/0/left/0.png'))
+    i = Units( units_file1[i].split(',')[0] , units_file1[i].split(',')[1],units_images_list[i])
+    unitslist.append( i )
 
-units_coords_y = []
+
+
 """
-units_images_list = [
+
+class Units:
+    def __init__( self , x , y , image ) :
+        self.x = x
+        self.y = y    
+        self.image = image
+
+for i in range( len ( units_file1 ) ) :
+    i = Units( units_file1[i].split(',')[0] , units_file1[i].split(',')[1],units_images_list[i]))
+    unitslist.append( i )
+
 
 pg.image.load('Objects/characters/Mutants/0/left/0.png'),
 pg.image.load('Objects/characters/Mutants/0/left/0.png'),
@@ -104,29 +122,5 @@ pg.image.load('Objects/characters/Mutants/0/left/0.png'),
 pg.image.load('Objects/characters/Mutants/0/left/0.png'),
 pg.image.load('Objects/characters/Mutants/0/left/0.png'),
 pg.image.load('Objects/characters/Mutants/0/left/0.png')
+"""
 
-]"""
-
-
-
-class Units:
-    def __init__( self , x , y , image  ) : 
-        self.x = x
-        self.y = y
-        self.image = image
-
-for i in units_file1:
-    x , y = i.split(',')[0] , i.split(',')[1]
-    units_coords_x.append(x)
-    units_coords_y.append(y)
-
-class  units1(Units):
-    def __init__( self , x , y ) : 
-        self.x = x
-        self.y = y
-        self.image = pg.image.load('Objects/characters/Mutants/0/left/0.png')
-        self.color = (255,0,0)
-
-for i in range(len(unitslist)):
-    i = Units( units_coords_x[i] , units_coords_y[i] )
-    unitslist.append( i )
